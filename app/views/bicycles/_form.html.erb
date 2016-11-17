@@ -27,7 +27,9 @@
     <%= f.select :style_id, Style.all.collect { |s| [ s.name, s.id ] } %>
 
     <br> <br>
-
+      <%= f.label :image_link , "Upload Image "%><br>
+      <%= f.file_field :image_link %>
+    <br> <br>
     <div class="actions">
     <%= f.submit %>
   </div>

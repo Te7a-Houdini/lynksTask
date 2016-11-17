@@ -52,3 +52,5 @@ gem "font-awesome-rails"
 gem "mysql2"
 
 gem 'devise'
+
+gem 'carrierwave', '>= 1.0.0.rc', '< 2.0'
