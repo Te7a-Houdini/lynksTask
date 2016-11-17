@@ -1,24 +1,20 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Ruby version 2.3
 
-Things you may want to cover:
+* Rails Version 5.0.0.1
 
-* Ruby version
+* Run Following Commands
 
-* System dependencies
+* gem install mysql
 
-* Configuration
+* bundle install
 
-* Database creation
+* rake db:create
 
-* Database initialization
+* rake db:migrate
 
-* How to run the test suite
+* rake db:seed
 
-* Services (job queues, cache servers, search engines, etc.)
+* go to /admins/sign_in to login admin page with userName: admin password: lynksTest
 
-* Deployment instructions
-
-* ...
