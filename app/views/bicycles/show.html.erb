@@ -1,3 +1,5 @@
+
+<% if admin_signed_in? %>
 <%= render 'admin_pages/logout' %>
 <p id="notice"><%= notice %></p>
 
@@ -27,5 +29,78 @@
 
 </div>
 
-<%= link_to 'Edit', edit_bicycle_path(@bicycle) %> |
+
 <%= link_to 'Back', admin_pages_index_path %>
+
+    <%else %>
+
+   <%= render 'header' %>
+
+    <!-- catg header banner section -->
+    <section id="aa-catg-head-banner">
+      <img src="<%= @bicycle.image_link %>" height="300" width="1920" alt="fashion img">
+      <div class="aa-catg-head-banner-area">
+        <div class="container">
+          <div class="aa-catg-head-banner-content">
+            <h2><%= @bicycle.name %></h2>
+
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- / catg header banner section -->
+
+    <!-- product category -->
+    <section id="aa-product-details">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="aa-product-details-area">
+              <div class="aa-product-details-content">
+                <div class="row">
+                  <!-- Modal view slider -->
+                  <div class="col-md-5 col-sm-5 col-xs-12">
+                    <div class="aa-product-view-slider">
+                      <div id="demo-1" class="simpleLens-gallery-container">
+                        <div class="simpleLens-container">
+                          <div class="simpleLens-big-image-container"><a data-lens-image="img/view-slider/large/polo-shirt-1.png" class="simpleLens-lens-image"><img src="img/view-slider/medium/polo-shirt-1.png" class="simpleLens-big-image"></a></div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Modal view content -->
+                  <div class="col-md-7 col-sm-7 col-xs-12">
+                    <div class="aa-product-view-content">
+                      <h3 style="color: #b3aeae"><%= @bicycle.name %></h3>
+                      <div class="aa-price-block">
+                        <span style="color:  #ff6666" class="aa-product-view-price"><%= number_to_currency(@bicycle.price,:delimiter => ".", :separator => ",") %></span>
+                      </div>
+                      <p><%= @bicycle.description %></p>
+
+
+                      <div class="aa-prod-quantity">
+
+                        <p class="aa-prod-category">
+                          Style: <p style="color: #ce7945"><%= @bicycle.style.name %></p>
+                        </p>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- / product category -->
+
+
+    <%= render 'footer' %>
+
+<% end %>
