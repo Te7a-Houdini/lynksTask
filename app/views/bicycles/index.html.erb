@@ -24,7 +24,7 @@
             <!-- logo  -->
             <div class="aa-logo">
               <!-- Text based logo -->
-              <a href="index.html">
+              <a href="bicycles">
                 <span class="fa fa-shopping-cart"></span>
                 <p>daily<strong>Shop</strong> <span>Your Shopping Partner</span></p>
               </a>
@@ -67,7 +67,7 @@
           <!-- Left nav -->
           <ul class="nav navbar-nav">
 
-            <li><a href="#">Pages </a>
+            <li><p>items </p>
 
             </li>
           </ul>
@@ -97,21 +97,74 @@
                 <div class="tab-pane fade in active" id="men">
                   <ul class="aa-product-catg">
                     <!-- start single product item -->
+                    <% @bicycles.each do |bicycle| %>
                     <li>
                       <figure>
-                        <a class="aa-product-img" href="#"><img src="img/man/polo-shirt-2.png" alt="polo shirt img"></a>
-                        <a class="aa-add-card-btn"href="#"><span class="fa fa-shopping-cart"></span>View Details</a>
+                        <a class="aa-product-img" href="#"><img height="300" width="250" src="<%= bicycle.image_link %>" ></a>
+                        <%= link_to raw('<span class="fa fa-shopping-cart"></span>View Details'), bicycle , {class: 'aa-add-card-btn'}%>
+
                         <figcaption>
-                          <h4 class="aa-product-title"><a href="#">Polo T-Shirt</a></h4>
-                          <span class="aa-product-price">$45.50</span><span class="aa-product-price"><del>$65.50</del></span>
+                          <h4 class="aa-product-title"><p ><%= bicycle.name %> (<%= bicycle.style.name %> )</p></h4>
+                          <span class="aa-product-price"><%= number_to_currency(bicycle.price,:delimiter => ".", :separator => ",") %></span>
                         </figcaption>
                       </figure>
                       <div class="aa-product-hvr-content">
-                          <a href="#" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#quick-view-modal"><span class="fa fa-search"></span></a>
+                          <a href="#" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#quick-view-modal-<%= bicycle.id %>"><span class="fa fa-search"></span></a>
                       </div>
 
                     </li>
 
+
+                        <!-- quick view modal -->
+                        <div class="modal fade" id="quick-view-modal-<%= bicycle.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-body">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <div class="row">
+                                  <!-- Modal view slider -->
+                                  <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="aa-product-view-slider">
+                                      <div class="simpleLens-gallery-container" id="demo-1">
+                                        <div class="simpleLens-container">
+                                          <div class="simpleLens-big-image-container">
+                                            <a class="simpleLens-lens-image" data-lens-image="<%= bicycle.image_link %>">
+                                              <img height="300" width="250" src="<%= bicycle.image_link %>" class="simpleLens-big-image">
+                                            </a>
+                                          </div>
+                                        </div>
+
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!-- Modal view content -->
+                                  <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="aa-product-view-content">
+                                      <h3><%= bicycle.name %></h3>
+                                      <div class="aa-price-block">
+                                        <span class="aa-product-view-price"><%= number_to_currency(bicycle.price,:delimiter => ".", :separator => ",") %></span>
+
+                                      </div>
+                                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis animi, veritatis quae repudiandae quod nulla porro quidem, itaque quis quaerat!</p>
+
+
+                                      <div class="aa-prod-quantity">
+                                        <p class="aa-prod-category">
+                                          Style: <%= bicycle.style.name %>
+                                        </p>
+                                      </div>
+                                      <div class="aa-prod-view-bottom">
+                                        <%= link_to 'View Details', bicycle , {class: 'aa-add-to-cart-btn'}%>
+
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div><!-- /.modal-content -->
+                          </div><!-- /.modal-dialog -->
+                        </div><!-- / quick view modal -->
+                    <% end %>
 
                   </ul>
 
@@ -119,54 +172,7 @@
                 <!-- / men product category -->
 
               </div>
-              <!-- quick view modal -->
-              <div class="modal fade" id="quick-view-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-body">
-                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                      <div class="row">
-                        <!-- Modal view slider -->
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <div class="aa-product-view-slider">
-                            <div class="simpleLens-gallery-container" id="demo-1">
-                              <div class="simpleLens-container">
-                                <div class="simpleLens-big-image-container">
-                                  <a class="simpleLens-lens-image" data-lens-image="img/view-slider/large/polo-shirt-1.png">
-                                    <img src="img/view-slider/medium/polo-shirt-1.png" class="simpleLens-big-image">
-                                  </a>
-                                </div>
-                              </div>
 
-                            </div>
-                          </div>
-                        </div>
-                        <!-- Modal view content -->
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <div class="aa-product-view-content">
-                            <h3>T-Shirt</h3>
-                            <div class="aa-price-block">
-                              <span class="aa-product-view-price">$34.99</span>
-                              <p class="aa-product-avilability">Avilability: <span>In stock</span></p>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis animi, veritatis quae repudiandae quod nulla porro quidem, itaque quis quaerat!</p>
-
-
-                            <div class="aa-prod-quantity">
-                              <p class="aa-prod-category">
-                                Category: <a href="#">Polo T-Shirt</a>
-                              </p>
-                            </div>
-                            <div class="aa-prod-view-bottom">
-                              <a href="" class="aa-add-to-cart-btn">View Details</a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div><!-- /.modal-content -->
-                </div><!-- /.modal-dialog -->
-              </div><!-- / quick view modal -->
             </div>
           </div>
         </div>

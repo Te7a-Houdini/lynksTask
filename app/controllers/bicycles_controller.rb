@@ -4,7 +4,7 @@ class BicyclesController < ApplicationController
   # GET /bicycles
   # GET /bicycles.json
   def index
-
+    @bicycles = Bicycle.all
   end
 
   # GET /bicycles/1
