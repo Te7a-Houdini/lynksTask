@@ -13,4 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+//= require bootstrap.js
+//= require jquery.smartmenus.js
+//= require jquery.smartmenus.bootstrap.js
+//= require jquery.simpleGallery.js
+//= require jquery.simpleLens.js
+//= require slick.js
+//= require nouislider.js
+//= require custom.js
