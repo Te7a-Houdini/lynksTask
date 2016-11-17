@@ -16,5 +16,5 @@
 
 * rake db:seed
 
-* go to /admins/sign_in to login admin page with userName: admin password: lynksTest
+* go to /admins/sign_in to login admin page with eamil: admin@example.com password: lynksTest
 
