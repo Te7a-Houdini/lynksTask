@@ -27,10 +27,15 @@
 
                         <!-- search box -->
                         <div class="aa-search-box">
-                            <form action="">
-                                <input type="text" name="" id="" placeholder="Search here ex. 'man' ">
-                                <button type="submit"><span class="fa fa-search"></span></button>
-                            </form>
+
+
+                        <input type="text" name="" id="searchBox" placeholder="Search here  ">
+                          <label  >name</label>
+                          <input type="checkbox" name="search[]" id="nameSearch"   >
+
+                          <label  >style</label>
+                          <input type="checkbox" name="search[]" id="styleSearch"  >
+
                         </div>
                         <!-- / search box -->
                     </div>
@@ -71,3 +76,5 @@
     </div>
 </section>
 <!-- / menu -->
+
+<%= javascript_include_tag "bicycle/custom" %>

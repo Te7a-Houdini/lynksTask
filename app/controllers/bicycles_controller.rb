@@ -1,4 +1,5 @@
 class BicyclesController < ApplicationController
+  before_action :authenticate_admin! , only: [:new,:create,:edit,:update,:destroy]
   before_action :set_bicycle, only: [:show, :edit, :update, :destroy]
 
   # GET /bicycles
@@ -59,6 +60,39 @@ class BicyclesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to admin_pages_index_path, notice: 'Bicycle was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def search
+    @conditions = params[:conditions]
+
+    @result = Bicycle
+
+    if @conditions[:name] != 'true' &&  @conditions[:style] != 'true'
+      @result = Bicycle.joins(:style).includes(:style).all
+    end
+
+    if @conditions[:name] == 'true'
+        @result = @result.joins(:style).includes(:style).search('`bicycles`.name',params[:value])
+    end
+
+    if @conditions[:style] == 'true'
+      @result  = @result.joins(:style).includes(:style).search('`styles`.name',params[:value])
+    end
+
+    @resultArray = []
+
+    @result.each do |bicycle|
+
+      @newVar = {styleName: bicycle.style.name,bicyleObj: bicycle}
+
+
+      @resultArray << @newVar
+
+    end
+
+    respond_to do |format|
+      format.json { render :json => {'result' => @resultArray } }
     end
   end
 
