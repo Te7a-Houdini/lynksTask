@@ -56,7 +56,6 @@ $( document ).ready(function() {
                 for (i=0 ; i< response.result.length ; i++)
                 {
                     resultObj = response.result[i];
-                    console.log(response.result[i])
                     $('#searchAjax').append('<li> ' +
                         '<figure>' +
                         ' <a class="aa-product-img" href="#"><img height="300" width="250" src="'+resultObj.bicyleObj.image_link.url+'" ></a>' +
@@ -75,11 +74,10 @@ $( document ).ready(function() {
                         '' +
                         '</li>')
                 }
-                console.log(response);
+
             },
             'error' : function (error){
-                console.log('error')
-                console.log(error);
+
             }
         });
     }
