@@ -73,11 +73,11 @@ class BicyclesController < ApplicationController
     end
 
     if @conditions[:name] == 'true'
-        @result = @result.joins(:style).includes(:style).search('`bicycles`.name',params[:value])
+        @result = @result.joins(:style).includes(:style).search('`bicycles`.name',params[:value][:nameText])
     end
 
     if @conditions[:style] == 'true'
-      @result  = @result.joins(:style).includes(:style).search('`styles`.name',params[:value])
+      @result  = @result.joins(:style).includes(:style).search('`styles`.name',params[:value][:styleText])
     end
 
     @resultArray = []
