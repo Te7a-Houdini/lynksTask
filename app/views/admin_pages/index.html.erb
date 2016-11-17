@@ -42,7 +42,7 @@
     <!-- Default panel contents -->
     <div class="panel-heading">bicycles</div>
     <div class="panel-body">
-      <%= link_to "Create" , "/admins/sign_out" , :method => 'get' ,  class:  'btn btn-success'%>
+      <%= link_to "Create" , "/bicycles/new" , :method => 'get' ,  class:  'btn btn-success'%>
     </div>
 
     <!-- Table -->
@@ -50,8 +50,23 @@
       <tr>
         <th>id</th>
         <th>name</th>
+        <th>price</th>
+        <th>style</th>
+        <th>show</th>
+        <th>edit</th>
+        <th>delete</th>
       </tr>
-      <tr><td>1</td> <td>rock</td></tr>
+      <% @bicycles.each do |bicycle| %>
+          <tr>
+            <td><%= bicycle.id %></td>
+            <td> <%= bicycle.name %></td>
+            <td><%= number_to_currency(bicycle.price,:delimiter => ".", :separator => ",") %></td>
+            <td><%= bicycle.style.name %></td>
+            <td><%= link_to 'Show', bicycle %></td>
+            <td><%= link_to 'Edit', edit_bicycle_path(bicycle) %></td>
+            <td><%= link_to 'Destroy', bicycle, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+      <% end %>
 
     </table>
   </div>

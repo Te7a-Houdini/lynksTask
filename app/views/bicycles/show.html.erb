@@ -1,4 +1,31 @@
+<%= render 'admin_pages/logout' %>
 <p id="notice"><%= notice %></p>
 
+<div class="container">
+  <table class="table">
+    <tr>
+      <th>id</th>
+      <th>name</th>
+      <th>price</th>
+      <th>style</th>
+      <th>description</th>
+      <th>image link</th>
+      <th>edit</th>
+    </tr>
+
+    <tr>
+      <td><%= @bicycle.id %></td>
+      <td><%= @bicycle.name %></td>
+      <td><%= @bicycle.price %></td>
+      <td><%= @bicycle.style.name %></td>
+      <td><%= @bicycle.description %></td>
+      <td><%= @bicycle.image_link %></td>
+
+      <td><%= link_to 'Edit', edit_style_path(@bicycle) %></td>
+    </tr>
+  </table>
+
+</div>
+
 <%= link_to 'Edit', edit_bicycle_path(@bicycle) %> |
-<%= link_to 'Back', bicycles_path %>
+<%= link_to 'Back', admin_pages_index_path %>

@@ -10,8 +10,25 @@
       </ul>
     </div>
   <% end %>
+    <%= f.label :name %>:
+    <%= f.text_field :name %>
+    <br>
+    <br>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+    <br>
+    <br>
+    <%= f.label :price %>
+    <%= f.text_field :price   %>
+    <br>
+    <br>
 
-  <div class="actions">
+          <%= f.label :style %><br />
+    <%= f.select :style_id, Style.all.collect { |s| [ s.name, s.id ] } %>
+
+    <br> <br>
+
+    <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>

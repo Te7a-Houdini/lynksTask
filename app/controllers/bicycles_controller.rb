@@ -15,6 +15,7 @@ class BicyclesController < ApplicationController
   # GET /bicycles/new
   def new
     @bicycle = Bicycle.new
+
   end
 
   # GET /bicycles/1/edit
@@ -28,7 +29,7 @@ class BicyclesController < ApplicationController
 
     respond_to do |format|
       if @bicycle.save
-        format.html { redirect_to @bicycle, notice: 'Bicycle was successfully created.' }
+        format.html { redirect_to admin_pages_index_path, notice: 'Bicycle was successfully created.' }
         format.json { render :show, status: :created, location: @bicycle }
       else
         format.html { render :new }
@@ -42,7 +43,7 @@ class BicyclesController < ApplicationController
   def update
     respond_to do |format|
       if @bicycle.update(bicycle_params)
-        format.html { redirect_to @bicycle, notice: 'Bicycle was successfully updated.' }
+        format.html { redirect_to admin_pages_index_path, notice: 'Bicycle was successfully updated.' }
         format.json { render :show, status: :ok, location: @bicycle }
       else
         format.html { render :edit }
@@ -56,7 +57,7 @@ class BicyclesController < ApplicationController
   def destroy
     @bicycle.destroy
     respond_to do |format|
-      format.html { redirect_to bicycles_url, notice: 'Bicycle was successfully destroyed.' }
+      format.html { redirect_to admin_pages_index_path, notice: 'Bicycle was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +70,6 @@ class BicyclesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bicycle_params
-      params.fetch(:bicycle, {})
+      params.fetch(:bicycle, {}).permit(:name,:description,:image_link,:price,:style_id)
     end
 end
